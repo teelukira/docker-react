@@ -1,0 +1,15 @@
+#Specify the base image
+FROM node:alpine
+
+#refer the working directory
+WORKDIR '/app'
+
+#Install pakages for JS
+COPY package.json .
+RUN npm install
+
+#COPY other source code
+COPY . .
+
+#RUN DOCKER WITH COMMAND 
+CMD ["npm","run","start"]
