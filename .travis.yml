@@ -8,3 +8,14 @@ before_install:
 script:
   - docker run -e CI=true teelukira/docker-react npm run test
   
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-2"
+  app: "docker-react-teelukira"
+  env: "DockerReactTeelukira-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-2-016549386268"
+  bucket_path: "docker-react-teelukira"
+  on:
+    branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
